@@ -1,0 +1,13 @@
+diff --git a/fetch_packages.py b/fetch_packages.py
+index 2930473..03613b9 100644
+--- a/fetch_packages.py
++++ b/fetch_packages.py
+@@ -11,7 +11,7 @@ from time import sleep
+ _RETRIES = 5
+ _OPT_VERBOSE = None
+ _OPT_DRY_RUN = None
+-_PACKAGE_CACHE='/tmp/cache/' + os.environ['USER'] + '/third_party'
++_PACKAGE_CACHE='/opt/stack/tmp/cache/' + os.environ['USER'] + '/third_party'
+ 
+ from lxml import objectify
+ 

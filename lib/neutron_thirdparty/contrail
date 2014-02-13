@@ -84,6 +84,7 @@ function install_contrail() {
         fi
     fi
     repo sync
+    test_install_fetch_packages_patch
     python third_party/fetch_packages.py
     (cd third_party/thrift-*; touch configure.ac README ChangeLog; autoreconf --force --install)
     scons
@@ -213,6 +214,14 @@ function apply_patch() {
 	    true
 	fi
     fi
+}
+
+function test_install_fetch_packages_patch() {
+    apply_patch $TOP_DIR/contrail/fetch_packages.py.patch $CONTRAIL_SRC/third_party/
+}
+
+function test_install_zookeeper_patch() {
+    apply_patch $TOP_DIR/contrail/zkServer.sh.patch $CONTRAIL_SRC/third_party/zookeeper-3.4.5/bin/ sudo
 }
 
 function test_install_cassandra_patch() { 
