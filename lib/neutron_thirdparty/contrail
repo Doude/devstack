@@ -30,7 +30,7 @@ function install_contrail() {
 
     # dependencies
     if is_ubuntu; then
-        apt_get install patch scons flex bison make vim chkconfig
+        apt_get install patch scons flex bison make vim
         apt_get install libexpat-dev libgettextpo0 libcurl4-openssl-dev
         apt_get install python-dev autoconf automake build-essential libtool
         apt_get install libevent-dev libxml2-dev libxslt-dev
@@ -373,7 +373,7 @@ function start_contrail() {
 
     # collector/vizd
     source /etc/contrail/vizd_param
-    screen_it vizd "export LD_LIBRARY_PATH=/opt/stack/contrail/build/lib; $CONTRAIL_SRC/build/debug/analytics/vizd --cassandra-server-list ${CASSANDRA_SERVER_LIST} --host-ip ${HOST_IP} ${LOG_FILE} ${LOG_LOCAL}"
+    screen_it vizd "LD_LIBRARY_PATH=/opt/stack/contrail/build/lib PATH=$PATH:$TOP_DIR/bin $CONTRAIL_SRC/build/debug/analytics/vizd --cassandra-server-list ${CASSANDRA_SERVER_LIST} --host-ip ${HOST_IP} ${LOG_FILE} ${LOG_LOCAL}"
     sleep 2
 
     source /etc/contrail/opserver_param

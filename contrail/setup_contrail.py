@@ -504,10 +504,14 @@ HWADDR=%s
             self.replace_in_file(REDIS_SENTINEL, 'sentinel monitor mymaster 127.0.0.1 6379 2', 'sentinel monitor mymaster '+collector_ip+' 6381 1')
 
             template_vals = {'__contrail_discovery_ip__': self._args.discovery_ip,
-                             '__contrail_host_ip__': self._args.collector_ip,
+                             '__contrail_host_ip__': collector_ip,
+                             '__contrail_listen_port__': '8086',
                              '__contrail_cassandra_server_list__' : ' '.join('%s:%s' % cassandra_server for cassandra_server in cassandra_server_list),
                              '__contrail_log_local__': '--log-local',
                              '__contrail_log_file__': '--log-file=/var/log/contrail/collector.log',
+                             '__contrail_redis_server__' : collector_ip,
+                             '__contrail_redis_server_port__' : '6381',
+                             '__contrail_http_server_port__' : '8089',
                             }
             self._template_substitute_write(vizd_param_template,
                                             template_vals, temp_dir_name + '/vizd_param')
@@ -519,7 +523,10 @@ HWADDR=%s
                              '__contrail_log_file__': '--log-file=/var/log/contrail/qe.log',
                              '__contrail_collectors__' : ' '.join('%s:%s' % collector_server for collector_server in collector_server_list),
                              '__contrail_redis_server__' : collector_ip,
-                             '__contrail_redis_server_port__' : 6380,
+                             '__contrail_redis_server_port__' : '6380',
+                             '__contrail_host_ip__': collector_ip,
+                             '__contrail_listen_port__': '8086',
+                             '__contrail_http_server_port__' : '8091',
                             }
             self._template_substitute_write(qe_param_template,
                                             template_vals, temp_dir_name + '/qed_param')
@@ -530,6 +537,11 @@ HWADDR=%s
                              '__contrail_log_local__': '--log_local',
                              '__contrail_log_file__': '--log_file=/var/log/contrail/opserver.log',
                              '__contrail_collectors__' : ' '.join('%s:%s' % collector_server for collector_server in collector_server_list),
+                             '__contrail_redis_server__' : collector_ip,
+                             '__contrail_redis_server_port__' : '6381',
+                             '__contrail_redis_query_port__' : '6380',
+                             '__contrail_http_server_port__' : '8090',
+                             '__contrail_rest_api_port__' : '8081',
                             }
             self._template_substitute_write(opserver_param_template,
                                             template_vals, temp_dir_name + '/opserver_param')
