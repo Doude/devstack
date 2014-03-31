@@ -156,13 +156,13 @@ function install_contrail() {
         cd ${contrail_cwd}
     fi
 
-    if [ ! -d $CONTRAIL_SRC/third_party/zookeeper-3.4.5 ]; then
+    if [ ! -d $CONTRAIL_SRC/third_party/zookeeper-3.4.6 ]; then
         contrail_cwd=$(pwd)
         cd $CONTRAIL_SRC/third_party
-        wget -N http://apache.mirrors.hoobly.com/zookeeper/stable/zookeeper-3.4.5.tar.gz
-        tar xvzf zookeeper-3.4.5.tar.gz
-	test_install_zookeeper_patch
-        cd zookeeper-3.4.5
+        wget -N http://apache.mirrors.hoobly.com/zookeeper/stable/zookeeper-3.4.6.tar.gz
+        tar xvzf zookeeper-3.4.6.tar.gz
+	    test_install_zookeeper_patch
+        cd zookeeper-3.4.6
         cp conf/zoo_sample.cfg conf/zoo.cfg
         cd ${contrail_cwd}
     fi
@@ -346,7 +346,7 @@ function start_contrail() {
 
     screen_it cass "export MAX_HEAP_SIZE=$CASS_MAX_HEAP_SIZE; export HEAP_NEWSIZE=$CASS_HEAP_NEWSIZE; sudo cassandra -f"
 
-    screen_it zk  "export MAX_HEAP_SIZE=$ZK_MAX_HEAP_SIZE; export HEAP_NEWSIZE=$ZK_HEAP_NEWSIZE; cd $CONTRAIL_SRC/third_party/zookeeper-3.4.5; ./bin/zkServer.sh start"
+    screen_it zk  "export MAX_HEAP_SIZE=$ZK_MAX_HEAP_SIZE; export HEAP_NEWSIZE=$ZK_HEAP_NEWSIZE; cd $CONTRAIL_SRC/third_party/zookeeper-3.4.6; ./bin/zkServer.sh start"
 
     screen_it ifmap "cd $CONTRAIL_SRC/third_party/irond-0.3.0-bin; java -jar ./irond.jar"
     sleep 2

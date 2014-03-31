@@ -1,5 +1,5 @@
---- /opt/stack/contrail/third_party/zookeeper-3.4.5/bin/zkServer.sh-orig	2014-02-10 12:36:12.138312109 +0100
-+++ /opt/stack/contrail/third_party/zookeeper-3.4.5/bin/zkServer.sh	2014-02-10 12:35:07.717084287 +0100
+--- /opt/stack/contrail/third_party/zookeeper-3.4.6/bin/zkServer.sh-orig	2014-02-10 12:36:12.138312109 +0100
++++ /opt/stack/contrail/third_party/zookeeper-3.4.6/bin/zkServer.sh	2014-02-10 12:35:07.717084287 +0100
 @@ -97,6 +97,17 @@
  
  _ZOO_DAEMON_OUT="$ZOO_LOG_DIR/zookeeper.out"
