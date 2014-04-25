@@ -234,7 +234,7 @@ kmod=vrouter/vrouter.ko
 pname=vnswad
 LIBDIR=/usr/lib64
 VHOST_CFG=/etc/sysconfig/network-scripts/ifcfg-vhost0
-VROUTER_LOGFILE=--log-file=/var/log/vrouter.log
+VROUTER_LOGFILE=--DEFAULT.log_file=/var/log/vrouter.log
 COLLECTOR=$__contrail_collector__
 $__contrail_dev__
 """)
