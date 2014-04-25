@@ -248,7 +248,7 @@ vnswad_conf_template = string.Template("""
 # IP address and port to be used to connect to collector. If IP is not configured,
 # value provided by discovery service will be used. (Optional)
 # port=8086
-# server=
+server=$__contrail_collector__
 
 [CONTROL-NODE]
 # IP address to be used to connect to control-node. Maximum of 2 IP addresses 
